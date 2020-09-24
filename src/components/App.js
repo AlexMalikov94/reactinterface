@@ -23,6 +23,8 @@ class App extends Component {
               this.setState = ({
                 myAppointments: apts
               })
+          } else {
+            
           }
       });
 
