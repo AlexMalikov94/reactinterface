@@ -16,12 +16,14 @@ class App extends Component {
     fetch('./data.json')
         .then(response => response.json())
         .then(result => {
-          const apts = result.map(item => {
-            return item
-          })
-            this.setState = ({
-              myAppointments: apts
+          if(result) {
+            const apts = result.map(item => {
+              return item
             })
+              this.setState = ({
+                myAppointments: apts
+              })
+          }
       });
 
      
