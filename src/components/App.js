@@ -24,9 +24,8 @@ class App extends Component {
                 myAppointments: apts
               })
           } else {
-             //
+            
           }
-          
       });
 
      
