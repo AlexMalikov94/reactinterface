@@ -7,29 +7,26 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-       myName: 'Alex',
-       myAppointments: []
+      myAppointments: [],
+      lastIndex: 0
     };
   }
 
   componentDidMount() {
     fetch('./data.json')
-        .then(response => response.json())
-        .then(result => {
-          if(result) {
-            const apts = result.map(item => {
-              return item
-            })
-              this.setState = ({
-                myAppointments: apts
-              })
-          } else {
-            
-          }
+      .then(response => response.json())
+      .then(result => {
+        const apts = result.map(item => {
+          item.aptId = this.state.lastIndex;
+          this.setState({ lastIndex: this.state.lastIndex + 1})
+          return item;
+        });
+        this.setState({
+          myAppointments: apts
+        });
       });
-
-     
   }
+
   render() {
     return (
       <main className="page bg-white" id="petratings">
@@ -39,7 +36,7 @@ class App extends Component {
               <div className="container">
                 <AddAppointments />
                 <SearchAppointments />
-                <ListAppointments appointments="{this.state.myAppointments}" />
+                <ListAppointments appointments={this.state.myAppointments} />
               </div>
             </div>
           </div>
