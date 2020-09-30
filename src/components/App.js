@@ -4,8 +4,7 @@ import '../css/App.css';
 import AddAppointments from './AddAppointments';
 import SearchAppointments from './SearchAppointments';
 import ListAppointments from './ListAppointments';
-
-import { without } from 'lodash';
+import {without} from 'lodash';
 
 class App extends Component {
   constructor() {
@@ -50,10 +49,14 @@ class App extends Component {
               <div className="container">
                 <AddAppointments />
                 <SearchAppointments />
+<<<<<<< Updated upstream
                 <ListAppointments
                   appointments={this.state.myAppointments}
                   deleteAppointment={this.deleteAppointment}
                 />
+=======
+                <ListAppointments appointments={this.state.myAppointments} deleteAppointment={this.deleteAppointment} />
+>>>>>>> Stashed changes
               </div>
             </div>
           </div>
