@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import '../css/App.css';
+
 import AddAppointments from './AddAppointments';
 import SearchAppointments from './SearchAppointments';
 import ListAppointments from './ListAppointments';
+
+import { without } from 'lodash';
+
 class App extends Component {
   constructor() {
     super();
@@ -10,16 +14,25 @@ class App extends Component {
       myAppointments: [],
       lastIndex: 0
     };
+    this.deleteAppointment = this.deleteAppointment.bind(this);
+  }
+
+  deleteAppointment(apt) {
+    let tempApts = this.state.myAppointments;
+    tempApts = without(tempApts, apt);
+
+    this.setState({
+      myAppointments: tempApts
+    });
   }
 
   componentDidMount() {
-    
     fetch('./data.json')
       .then(response => response.json())
       .then(result => {
         const apts = result.map(item => {
           item.aptId = this.state.lastIndex;
-          this.setState({ lastIndex: this.state.lastIndex + 1})
+          this.setState({ lastIndex: this.state.lastIndex + 1 });
           return item;
         });
         this.setState({
@@ -37,7 +50,10 @@ class App extends Component {
               <div className="container">
                 <AddAppointments />
                 <SearchAppointments />
-                <ListAppointments appointments={this.state.myAppointments} />
+                <ListAppointments
+                  appointments={this.state.myAppointments}
+                  deleteAppointment={this.deleteAppointment}
+                />
               </div>
             </div>
           </div>
