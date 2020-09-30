@@ -49,14 +49,10 @@ class App extends Component {
               <div className="container">
                 <AddAppointments />
                 <SearchAppointments />
-<<<<<<< Updated upstream
                 <ListAppointments
                   appointments={this.state.myAppointments}
                   deleteAppointment={this.deleteAppointment}
                 />
-=======
-                <ListAppointments appointments={this.state.myAppointments} deleteAppointment={this.deleteAppointment} />
->>>>>>> Stashed changes
               </div>
             </div>
           </div>
