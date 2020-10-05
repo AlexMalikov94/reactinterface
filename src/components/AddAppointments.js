@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { FaPlus } from 'react-icons/fa';
-import { threadId } from 'worker_threads';
 
 class AddAppointments extends Component {
   constructor() {
